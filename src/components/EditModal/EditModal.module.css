@@ -63,3 +63,15 @@
     background-color: #47B960;
     border: 1px solid #47B960;
 }
+
+@media (max-width: 700px){
+    .editModal .modalContent{
+        width: 25rem;
+    }
+}
+
+@media (max-width: 400px){
+    .editModal .modalContent{
+        width: 20rem;
+    }
+}

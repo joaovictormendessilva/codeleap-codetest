@@ -47,3 +47,15 @@
     background-color: #FF5151;
     border: 1px solid #FF5151;
 }
+
+@media (max-width: 700px){
+    .deleteModal .modalContent{
+        width: 25rem;
+    }
+}
+
+@media (max-width: 400px){
+    .deleteModal .modalContent{
+        width: 20rem;
+    }
+}

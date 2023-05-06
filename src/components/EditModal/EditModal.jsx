@@ -1,5 +1,4 @@
 // CSS Module for Modal Edit
-
 import styles from './EditModal.module.css';
 
 // React Hooks
