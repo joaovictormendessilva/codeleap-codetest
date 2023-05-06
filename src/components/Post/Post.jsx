@@ -6,8 +6,16 @@ import deleteButton from '../../assets/delete.png';
 
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import { Modal } from '../Modal/Modal';
+import { useState } from 'react';
 
 export function Post({ idPost, username, createdDateTime, title, content, nameUserLogged }){
+
+    const [isOpenModal, setIsOpenModal] = useState(false);
+
+    function toggleIsOpenModal(){
+        setIsOpenModal(!isOpenModal)
+    }
 
     const navigate = useNavigate();
 
@@ -24,7 +32,10 @@ export function Post({ idPost, username, createdDateTime, title, content, nameUs
 
                 {nameUserLogged == username ?
                     <div className={styles.actionsPost}>
-                        <button onClick={() => deletePost(idPost)}>
+                        {/* <button onClick={() => deletePost(idPost)}>
+                            <img src={deleteButton} alt="" />
+                        </button> */}
+                        <button onClick={() => setIsOpenModal(true)}>
                             <img src={deleteButton} alt="" />
                         </button>
                         <button>
@@ -48,6 +59,14 @@ export function Post({ idPost, username, createdDateTime, title, content, nameUs
                     </p>
                 </div>
             </div>
+
+            <Modal 
+                isOpenModal={isOpenModal} 
+                toggleIsOpenModal={toggleIsOpenModal} 
+                idPost={idPost}
+                onDeletePost={deletePost}
+            />
+
         </div>
     );
 };
