@@ -57,11 +57,25 @@
     border: 1px solid #999999;
 }
 
+.editModal .modalContent .modalActions .cancelButton:hover{
+    color: #000000;
+    font-weight: 700;
+    background-color: #ededed;
+    border: 1px solid #999999;
+}
+
 .editModal .modalContent .modalActions .confirmButton{
     color: #ffffff;
     font-weight: 700;
     background-color: #47B960;
     border: 1px solid #47B960;
+}
+
+.editModal .modalContent .modalActions .confirmButton:hover{
+    color: #ffffff;
+    font-weight: 700;
+    background-color: #108129;
+    border: 1px solid #108129;
 }
 
 @media (max-width: 700px){

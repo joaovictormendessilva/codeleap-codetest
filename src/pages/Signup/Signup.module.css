@@ -42,3 +42,7 @@
     font-size: 1rem;
     padding: 0.424rem 1.938rem;
 }
+
+.signupButton:not([disabled]):hover{
+    background-color: #3f5cac;
+}
