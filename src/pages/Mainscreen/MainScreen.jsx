@@ -34,11 +34,11 @@ export function MainScreen(){
         setChangeTextArea(event.target.value);
     }
 
-    function handleSubmitPost(event){
+    async function handleSubmitPost(event){
 
         event.preventDefault();
 
-        axios.post(`https://dev.codeleap.co.uk/careers/`, {
+        await axios.post(`https://dev.codeleap.co.uk/careers/`, {
             username: nameUserLogged,
             title: changeTitle,
             content: changeTextArea
