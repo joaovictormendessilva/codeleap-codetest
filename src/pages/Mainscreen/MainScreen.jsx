@@ -72,6 +72,9 @@ export function MainScreen(){
             <div className={styles.container}>
                 <header>
                     <h1>CodeLeap Network</h1>
+                    <button onClick={() => navigate('/')}>
+                        <i class="bi bi-box-arrow-left"></i>
+                    </button>
                 </header>
 
                 <div className={styles.mainScreenForm}>
