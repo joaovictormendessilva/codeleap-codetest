@@ -71,6 +71,11 @@ header button i{
     cursor: pointer;
 }
 
+.mainScreenButtonContainer .mainScreenCreateButton:not([disabled]):hover{
+    background-color: #3f5cac;
+    transition: 1s;
+}
+
 #sentinel{
     list-style: none;
 }

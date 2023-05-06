@@ -19,6 +19,7 @@ export function MainScreen(){
     const [changeTextArea, setChangeTextArea] = useState('');
     const [data, setData] = useState([]);
     const [currentPage, setCurrentPage] = useState(10);
+    const [loading, setLoading] = useState(false);
 
     const isEmptyFields = changeTitle.length === 0 | changeTextArea.length === 0;
 
@@ -51,7 +52,7 @@ export function MainScreen(){
         axios.get(`https://dev.codeleap.co.uk/careers/?limit=${currentPage}&offset=${currentPage}/`)
         .then(({data}) => {
             setData(data.results);
-            console.log(data.results)
+            setLoading(true);
         })
         .catch((error) => {
             console.log(error)
@@ -121,10 +122,8 @@ export function MainScreen(){
                             nameUserLogged={nameUserLogged}
                         />
                 })}
-
-                <Loader />
-
-                <div id='sentinel'></div>
+                
+                <div id='sentinel'><Loader /></div>
             </div>
         </div>
     );

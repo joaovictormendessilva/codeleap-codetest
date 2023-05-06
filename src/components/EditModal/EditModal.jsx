@@ -19,10 +19,12 @@ export function EditModal({ isOpenEditModal, toggleIsOpenEditModal, idPost, titl
 
     function handleChangeTitleToEdit(event){
         setChangeTitleToEdit(event.target.value);
+        event.target.setCustomValidity("");
     }
 
     function handleChangeContentToEdit(event){
         setChangeContentToEdit(event.target.value);
+        event.target.setCustomValidity("");
     }
 
     function handleEdit(event){
@@ -36,6 +38,10 @@ export function EditModal({ isOpenEditModal, toggleIsOpenEditModal, idPost, titl
             content: changeContentToEdit
         })
         navigate(0)
+    }
+
+    function customValidity(event){
+        event.target.setCustomValidity('Please fill in this field.')
     }
 
     if (isOpenEditModal) {
@@ -55,6 +61,8 @@ export function EditModal({ isOpenEditModal, toggleIsOpenEditModal, idPost, titl
                                 placeholder='Enter text here to edit'
                                 defaultValue={title || ''}
                                 onChange={handleChangeTitleToEdit}
+                                required
+                                onInvalid={customValidity}
                             />
                         </div>
     
@@ -66,6 +74,8 @@ export function EditModal({ isOpenEditModal, toggleIsOpenEditModal, idPost, titl
                                 placeholder="Edit the content here..."
                                 defaultValue={content || ''}
                                 onChange={handleChangeContentToEdit}
+                                required
+                                onInvalid={customValidity}
                             />
                         </div>
     
