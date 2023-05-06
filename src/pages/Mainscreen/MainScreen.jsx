@@ -10,6 +10,7 @@ import axios from 'axios';
 
 // Post Component
 import { Post } from '../../components/Post/Post';
+import { Loader } from '../../components/Loader/Loader';
 
 
 export function MainScreen(){
@@ -121,7 +122,9 @@ export function MainScreen(){
                         />
                 })}
 
-                <li id='sentinel'/>
+                <Loader />
+
+                <div id='sentinel'></div>
             </div>
         </div>
     );

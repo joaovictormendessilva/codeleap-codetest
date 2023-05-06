@@ -70,3 +70,7 @@ header button i{
     padding: 0.424rem 1.689rem 0.424rem 1.824rem;
     cursor: pointer;
 }
+
+#sentinel{
+    list-style: none;
+}

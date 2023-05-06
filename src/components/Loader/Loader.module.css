@@ -1,0 +1,18 @@
+.loader{
+    text-align: center;
+}
+
+svg{
+    color: white;
+}
+
+.loader img{
+    width: 10rem;
+    animation: spinner 1s linear infinite;
+}
+
+@keyframes spinner{
+    100%{
+        transform: rotate(360deg);
+    }
+}
