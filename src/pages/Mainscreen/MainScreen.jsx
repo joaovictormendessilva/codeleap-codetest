@@ -17,6 +17,7 @@ export function MainScreen(){
     const [changeTitle, setChangeTitle] = useState('');
     const [changeTextArea, setChangeTextArea] = useState('');
     const [data, setData] = useState([]);
+    const [currentPage, setCurrentPage] = useState(10);
 
     const isEmptyFields = changeTitle.length === 0 | changeTextArea.length === 0;
 
@@ -46,14 +47,25 @@ export function MainScreen(){
     }
 
     useEffect(() => {
-        axios.get(`https://dev.codeleap.co.uk/careers/`)
+        axios.get(`https://dev.codeleap.co.uk/careers/?limit=${currentPage}&offset=${currentPage}/`)
         .then(({data}) => {
             setData(data.results);
+            console.log(data.results)
         })
         .catch((error) => {
             console.log(error)
         })
-    }, [])
+    }, [currentPage])
+
+    useEffect(() => {
+        const intersectionObserver = new IntersectionObserver((entries) =>{
+            if (entries.some((entry) => entry.isIntersecting)) {
+                setCurrentPage((currentPageInsideState) => currentPageInsideState + 10)
+            }
+        });
+        intersectionObserver.observe(document.querySelector('#sentinel'));
+        return () => intersectionObserver.disconnect();
+    }, []);
 
     return (
         <div className={styles.mainScreen}>
@@ -105,6 +117,8 @@ export function MainScreen(){
                             nameUserLogged={nameUserLogged}
                         />
                 })}
+
+                <li id='sentinel'/>
             </div>
         </div>
     );
