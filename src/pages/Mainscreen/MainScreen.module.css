@@ -1,0 +1,61 @@
+.mainScreen{
+    display: flex;
+    justify-content: center;
+}
+
+.container{
+    width: 50rem;
+    background-color: #fff;
+}
+
+header{
+    background-color: #7695EC;
+    color: #fff;
+    padding: 1.688rem 2.313rem;
+}
+
+header h1{
+    font-size: 1.375rem;
+    line-height: 25.78px;
+}
+
+.mainScreenForm{
+    padding: 1.5rem;
+}
+
+.mainScreenForm form{
+    border: 1px solid #999999;
+    border-radius: 1rem;
+    padding: 1.5rem;
+}
+
+.mainScreenForm form h4{
+    font-size: 22px;
+}
+
+.mainScreenForm form .formControl{
+    margin-top: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.mainScreenForm form .formControl .titleInput{
+    padding: 0.5rem 0.668rem;
+}
+
+.mainScreenForm form .formControl .contentArea{
+    padding: 0.438rem 0.668rem;
+    resize: none;
+}
+
+.mainScreenButtonContainer{
+    margin-top: 1.5rem;
+    text-align: right;
+}
+
+.mainScreenButtonContainer .mainScreenCreateButton{
+    font-size: 1rem;
+    padding: 0.424rem 1.689rem 0.424rem 1.824rem;
+    cursor: pointer;
+}

@@ -1,0 +1,52 @@
+.post{
+    margin: 0 1.5rem 1.5rem;
+    background: #FFFFFF;
+    border: 1px solid #999999;
+    border-radius: 16px;
+
+    overflow: hidden;
+}
+
+.postHeader{
+    background-color: #7695EC;
+    padding: 1.5rem;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+}
+
+.postHeader h4{
+    color: #fff;
+    font-size: 1.375rem;
+}
+
+.postHeader .actionsPost{
+    display: flex;
+    gap: 2.138rem;
+}
+
+.postHeader .actionsPost i{
+    font-size: 1.375rem;
+}
+
+.postHeader .actionsPost i,
+.postHeader .actionsPost button{
+    cursor: pointer;
+}
+
+.postContentContainer{
+    padding: 1.5rem;
+}
+
+.postContentContainer .userAndDate{
+    display: flex;
+    justify-content: space-between;
+    color: #777777;
+    font-size: 1.125rem;
+}
+
+.postContentContainer .postContent{
+    margin-top: 1rem;
+}
