@@ -1,14 +1,15 @@
-import styles from './Modal.module.css';
+// CSS Module for Modal Delete
+import styles from './DeleteModal.module.css';
 
-export function Modal({ isOpenModal, toggleIsOpenModal, idPost, onDeletePost }){
+export function DeleteModal({ isOpenDeleteModal, toggleIsOpenDeleteModal, idPost, onDeletePost }){
 
-    if (isOpenModal) {
+    if (isOpenDeleteModal) {
         return(
-            <div className={styles.modal}>
+            <div className={styles.deleteModal}>
                 <div className={styles.modalContent}>
                     <h4 className={styles.modalTitle}>Are you sure you want to delete this item?</h4>
                     <div className={styles.modalActions}>
-                        <button className={styles.cancelButton} onClick={() => toggleIsOpenModal()}>Cancel</button>
+                        <button className={styles.cancelButton} onClick={() => toggleIsOpenDeleteModal()}>Cancel</button>
                         <button className={styles.DeleteButton} onClick={() => onDeletePost(idPost)}>Delete</button>
                     </div>
                 </div>

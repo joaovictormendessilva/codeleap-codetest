@@ -4,17 +4,30 @@ import styles from './Post.module.css';
 // Button Images
 import deleteButton from '../../assets/delete.png';
 
+// React Router DOM
 import { useNavigate } from 'react-router-dom';
+
+// Axios
 import axios from 'axios';
-import { Modal } from '../Modal/Modal';
+
+// Modal Component
+import { DeleteModal } from '../DeleteModal/DeleteModal';
+
+// React Hooks
 import { useState } from 'react';
+import { EditModal } from '../EditModal/EditModal';
 
 export function Post({ idPost, username, createdDateTime, title, content, nameUserLogged }){
 
-    const [isOpenModal, setIsOpenModal] = useState(false);
+    const [isOpenDeleteModal, setIsOpenDeleteModal] = useState(false);
+    const [isOpenEditModal, setIsOpenEditModal] = useState(false);
 
-    function toggleIsOpenModal(){
-        setIsOpenModal(!isOpenModal)
+    function toggleIsOpenDeleteModal(){
+        setIsOpenDeleteModal(!isOpenDeleteModal)
+    }
+
+    function toggleIsOpenEditModal(){
+        setIsOpenEditModal(!isOpenEditModal)
     }
 
     const navigate = useNavigate();
@@ -24,7 +37,6 @@ export function Post({ idPost, username, createdDateTime, title, content, nameUs
         navigate(0);
     }
 
-
     return (
         <div className={styles.post}>
             <div className={styles.postHeader}>
@@ -32,13 +44,10 @@ export function Post({ idPost, username, createdDateTime, title, content, nameUs
 
                 {nameUserLogged == username ?
                     <div className={styles.actionsPost}>
-                        {/* <button onClick={() => deletePost(idPost)}>
-                            <img src={deleteButton} alt="" />
-                        </button> */}
-                        <button onClick={() => setIsOpenModal(true)}>
+                        <button onClick={() => setIsOpenDeleteModal(true)}>
                             <img src={deleteButton} alt="" />
                         </button>
-                        <button>
+                        <button onClick={() => setIsOpenEditModal(true)}>
                             <i className="bi bi-pencil-square"></i>
                         </button>
                     </div>
@@ -60,11 +69,19 @@ export function Post({ idPost, username, createdDateTime, title, content, nameUs
                 </div>
             </div>
 
-            <Modal 
-                isOpenModal={isOpenModal} 
-                toggleIsOpenModal={toggleIsOpenModal} 
+            <DeleteModal 
+                isOpenDeleteModal={isOpenDeleteModal} 
+                toggleIsOpenDeleteModal={toggleIsOpenDeleteModal} 
                 idPost={idPost}
                 onDeletePost={deletePost}
+            />
+
+            <EditModal 
+                isOpenEditModal={isOpenEditModal} 
+                toggleIsOpenEditModal={toggleIsOpenEditModal}
+                idPost={idPost}
+                title={title}
+                content={content}
             />
 
         </div>

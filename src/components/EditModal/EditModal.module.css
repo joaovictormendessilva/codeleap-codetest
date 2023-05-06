@@ -1,0 +1,65 @@
+.editModal{
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    background: rgba(119, 119, 119, 0.8);
+}
+
+.editModal .modalContent{
+    background-color: #FFFFFF;
+    margin: 15% auto;
+    padding: 1.5rem;
+    border: 1px solid #999999;
+    border-radius: 1rem;
+    width: 41.25rem;
+}
+
+.editModal form h4{
+    font-size: 22px;
+}
+
+.editModal form .formControl{
+    margin-top: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.editModal form .formControl .titleInput{
+    padding: 0.5rem 0.668rem;
+}
+
+.editModal form .formControl .contentArea{
+    padding: 0.438rem 0.668rem;
+    resize: none;
+}
+
+.editModal .modalContent .modalActions{
+    margin-top: 1.5rem;
+    display: flex;
+    justify-content: flex-end;
+    gap: 1rem;
+}
+
+.editModal .modalContent .modalActions button{
+    padding: 0.375rem 2.027rem 0.474rem 2.094rem;
+    cursor: pointer;
+}
+
+.editModal .modalContent .modalActions .cancelButton{
+    color: #000000;
+    font-weight: 700;
+    background-color: #FFFFFF;
+    border: 1px solid #999999;
+}
+
+.editModal .modalContent .modalActions .confirmButton{
+    color: #ffffff;
+    font-weight: 700;
+    background-color: #47B960;
+    border: 1px solid #47B960;
+}

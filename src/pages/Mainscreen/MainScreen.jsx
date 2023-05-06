@@ -3,7 +3,7 @@ import styles from './MainScreen.module.css';
 
 import { useEffect, useState } from 'react';
 
-import { useLocation, useSearchParams } from 'react-router-dom';
+import { useNavigate, useSearchParams } from 'react-router-dom';
 
 // Axios
 import axios from 'axios';
@@ -23,6 +23,8 @@ export function MainScreen(){
     const [searchParams] = useSearchParams();
     const nameUserLogged = searchParams.get('name');
 
+    const navigate = useNavigate();
+
     function handleChangeTitle(event){
         setChangeTitle(event.target.value);
     }
@@ -31,11 +33,22 @@ export function MainScreen(){
         setChangeTextArea(event.target.value);
     }
 
+    function handleSubmitPost(event){
+
+        event.preventDefault();
+
+        axios.post(`https://dev.codeleap.co.uk/careers/`, {
+            username: nameUserLogged,
+            title: changeTitle,
+            content: changeTextArea
+        })
+        navigate(0);
+    }
+
     useEffect(() => {
         axios.get(`https://dev.codeleap.co.uk/careers/`)
         .then(({data}) => {
             setData(data.results);
-            console.log(data.results)
         })
         .catch((error) => {
             console.log(error)
@@ -50,7 +63,7 @@ export function MainScreen(){
                 </header>
 
                 <div className={styles.mainScreenForm}>
-                    <form action="">
+                    <form onSubmit={handleSubmitPost}>
                         <h4>What's on your mind?</h4>
 
                         <div className={styles.formControl}>
@@ -74,7 +87,7 @@ export function MainScreen(){
                         </div>
 
                         <div className={styles.mainScreenButtonContainer}>
-                            <button className={styles.mainScreenCreateButton} disabled={isEmptyFields}>
+                            <button type='submit' className={styles.mainScreenCreateButton} disabled={isEmptyFields}>
                                 Create
                             </button>
                         </div>
