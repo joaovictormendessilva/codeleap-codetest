@@ -7,6 +7,9 @@ import deleteButton from '../../assets/delete.png';
 // React Router DOM
 import { useNavigate } from 'react-router-dom';
 
+// Date FNS
+import { formatDistanceToNow } from 'date-fns';
+
 // Axios
 import axios from 'axios';
 
@@ -17,10 +20,18 @@ import { DeleteModal } from '../DeleteModal/DeleteModal';
 import { useState } from 'react';
 import { EditModal } from '../EditModal/EditModal';
 
+
 export function Post({ idPost, username, createdDateTime, title, content, nameUserLogged }){
 
     const [isOpenDeleteModal, setIsOpenDeleteModal] = useState(false);
     const [isOpenEditModal, setIsOpenEditModal] = useState(false);
+
+    // Navigate React Router DOM
+    const navigate = useNavigate();
+
+    // Post Hour Conversion
+    const dateConversion = new Date(createdDateTime);
+    const publishedDateRelativeToNow = formatDistanceToNow(dateConversion)
 
     function toggleIsOpenDeleteModal(){
         setIsOpenDeleteModal(!isOpenDeleteModal)
@@ -30,7 +41,7 @@ export function Post({ idPost, username, createdDateTime, title, content, nameUs
         setIsOpenEditModal(!isOpenEditModal)
     }
 
-    const navigate = useNavigate();
+   
 
     async function deletePost(id){
         await axios.delete(`https://dev.codeleap.co.uk/careers/${id}/`)
@@ -59,7 +70,8 @@ export function Post({ idPost, username, createdDateTime, title, content, nameUs
             <div className={styles.postContentContainer}>
                 <div className={styles.userAndDate}>
                     <h4>@{username}</h4>
-                    <span>25 minutes ago</span>
+                    <span>{publishedDateRelativeToNow} ago</span>
+                    
                 </div>
 
                 <div className={styles.postContent}>
