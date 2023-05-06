@@ -32,8 +32,8 @@ export function EditModal({ isOpenEditModal, toggleIsOpenEditModal, idPost, titl
         editPost(idPost);
     }
 
-    function editPost(id){
-        axios.patch(`https://dev.codeleap.co.uk/careers/${id}/`, {
+    async function editPost(id){
+        await axios.patch(`https://dev.codeleap.co.uk/careers/${id}/`, {
             title: changeTitleToEdit,
             content: changeContentToEdit
         })
